@@ -1,0 +1,11 @@
+{
+  "Id":    1,
+  "Type":  "logic",
+  "Name":  "test",
+  "Timezone":8,
+  "Net":{
+    "Ext": "tcp://:8888",
+    "Timeout":180
+  },
+  "Redis":["@127.0.0.1:6379"]
+}

@@ -15,7 +15,7 @@ import (
 func main() {
 	Config.BuildDate = "2017.8.16"
 	antnet.Printf("build date:%v\n", Config.BuildDate)
-	path := flag.String("f", "conf/pvp.json", "run config")
+	path := flag.String("f", "conf/test.json", "run config")
 	daemon := flag.Int("d", 0, "1 for daemon")
 	flag.Parse()
 	if *daemon == 1 {
