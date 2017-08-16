@@ -1,0 +1,7 @@
+import "common.proto";
+//玩家登陆
+message GamerLoginC2S
+{
+	optional int32 id = 1;				//玩家id 
+    optional string channel = 3;          //渠道
+}
