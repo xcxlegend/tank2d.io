@@ -351,6 +351,7 @@ func StartServer(addr string, typ MsgType, handler IMsgHandler, parser *Parser) 
 		}
 		return err
 	}
+
 	return nil
 }
 

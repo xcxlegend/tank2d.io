@@ -22,7 +22,6 @@ const (
 
 var RedisManager *antnet.RedisManager
 var GamersPerReis int = 300000
-var SysMails *modelServerSysMail
 
 func GetGamerRedis(gid int32) *antnet.Redis {
 	return RedisManager.GetByRid(int(gid) / GamersPerReis)
@@ -41,9 +40,5 @@ func Start() {
 	}
 
 	RedisManager = antnet.NewRedisManager(config)
-	//if Config.Server.Type == "logic" {
-	//	RedisManager.Sub(recvPublish, antnet.Sprintf("%d", Config.Server.Notify), antnet.Sprintf("%d.%d", Config.Server.Notify, Config.Server.Id))
-	//}
 
-	InitSysMails()
 }

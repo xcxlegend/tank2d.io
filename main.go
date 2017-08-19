@@ -6,10 +6,10 @@ import (
 	_ "control"
 	"flag"
 	"model"
-	"server/auth"
+	//"server/auth"
 	"server/logic"
-	"server/match"
-	"server/pvp"
+	//"server/match"
+	//"server/pvp"
 )
 
 func main() {
@@ -32,11 +32,12 @@ func main() {
 
 	antnet.LogInfo("build date:%v", Config.BuildDate)
 	ReadConfig(*path)
+	antnet.LogInfo("config.server: %v", Config.Server)
 	model.Start()
 	//if Config.Server.Type == "auth" {
-	auth.Start()
+	//auth.Start()
 	//} else if Config.Server.Type == "pvp" {
-	pvp.Start()
+	//pvp.Start()
 	//} else if Config.Server.Type == "logic" {
 	logic.Start()
 	//} else if Config.Server.Type == "match" {

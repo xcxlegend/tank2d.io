@@ -183,36 +183,6 @@ func UseRole(w http.ResponseWriter, r *http.Request) {
 
 var MinServer *pb.ServerInfo
 
-func updateServer() {
-	var min int32
-	infos, err := model.UpdateServerInfo()
-	if err == nil {
-		StartConnect(infos, func(info *pb.ServerInfo) bool {
-			return info.GetServerType() == "logic"
-		})
-	}
-
-	if MinServer != nil && !IsServerOk(MinServer.GetId()) {
-		MinServer = nil
-	}
-
-	if err == nil {
-		for k, v := range infos {
-			if v.GetServerType() == "logic" {
-				if MinServer == nil && IsServerOk(k) {
-					MinServer = v
-					min = v.GetLoad()
-				}
-
-				if min-v.GetLoad() > 1000 && IsServerOk(k) {
-					MinServer = v
-					min = v.GetLoad()
-				}
-			}
-		}
-	}
-}
-
 func getServer() *pb.ServerInfo {
 	return MinServer
 }
@@ -244,9 +214,4 @@ func Start() {
 		}
 	})
 
-	updateServer()
-	antnet.SetTimeout(3000, func(args ...interface{}) int {
-		updateServer()
-		return 3000
-	})
 }
